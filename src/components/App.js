@@ -1,21 +1,29 @@
 import React from 'react';
 import { Scale } from '@tonaljs/tonal';
 
-class App extends React.Component {
-  state = { scale: null };
+import KeySelect from './KeySelect';
 
-  componentDidMount() {
-    this.setState({
-      scale: Scale.get('c5 melodic minor')
-    });
+class App extends React.Component {
+  state = {
+    keys: ['C', 'F', 'Bb', 'Eb', 'Ab', 'Db', 'Gb', 'B', 'E', 'A', 'D'],
+    selectedKey: null
+  };
+
+  onKeySelect = (key) => {
+    this.setState({ selectedKey: key });
   }
 
   render() {
-    if (!this.state.scale) {
-      return <h1>Loading...</h1>;
-    }
+    return (
+      <div className="ui container">
+        <h1>
+          Minor II - V <br />
+          Practice Tool
+        </h1>
 
-    return <h1>{this.state.scale.name}</h1>;
+        <KeySelect keys={this.state.keys} onKeySelect={this.onKeySelect} />
+      </div>
+    );
   }
 }
 
