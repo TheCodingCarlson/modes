@@ -1,4 +1,5 @@
 import React from 'react';
+import Keyboard from './Keyboard';
 
 const DisplayChord = ({ chordData }) => {
   if (chordData) {
@@ -13,6 +14,7 @@ const DisplayChord = ({ chordData }) => {
                     return <div key={note} className="item">{note}</div>
                 }) }
               </div>
+              <Keyboard selectedNotes={chordData.scale.notes} />
             </div>
         </div>
       </div>
